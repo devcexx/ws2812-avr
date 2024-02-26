@@ -45,7 +45,7 @@ impl NopGen for NopBlock<1> {
 impl<const N: u8> NopGen for NopBlock<N>
 where
     BExpr<{ N > 1 }>: IsTrue,
-    NopBlock<{ N - 1 }>: NopGen,
+    NopBlock<{ N - 2 }>: NopGen,
 {
     #[inline(always)]
     fn gen() {
@@ -58,6 +58,6 @@ where
             asm!("rjmp +0");
         }
 
-        <NopBlock<{ N - 1 }> as NopGen>::gen();
+        <NopBlock<{ N - 2 }> as NopGen>::gen();
     }
 }
