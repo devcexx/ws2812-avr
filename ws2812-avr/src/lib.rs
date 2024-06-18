@@ -25,6 +25,8 @@ along with ws2812-avr. If not, see <https://www.gnu.org/licenses/>.
 #![feature(adt_const_params)]
 #![feature(const_trait_impl)]
 #![feature(const_slice_index)]
+#![feature(effects)]
+
 mod color;
 mod ports;
 pub mod util;
