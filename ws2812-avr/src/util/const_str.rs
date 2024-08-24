@@ -20,6 +20,7 @@ along with ws2812-avr. If not, see <https://www.gnu.org/licenses/>.
  * currently used for construct diagnostic strings that can be used to
  * panic in const evaluation, for showing informative messages to the
  * user. */
+#[const_trait]
 trait CopyFromSliceConst<A> {
     fn const_copy_from_slice(&mut self, other: &[A]);
 }
@@ -65,11 +66,11 @@ pub struct ConstStr<const LEN: usize> {
     data: [u8; LEN],
 }
 
-impl<const LEN: usize> const AsRef<str> for ConstStr<LEN> {
-    fn as_ref(&self) -> &str {
-        unsafe { core::str::from_utf8_unchecked(&self.data) }
-    }
-}
+// impl<const LEN: usize> const AsRef<str> for ConstStr<LEN> {
+//     fn as_ref(&self) -> &str {
+//         unsafe { core::str::from_utf8_unchecked(&self.data) }
+//     }
+// }
 
 impl ConstStr<0> {
     /**
