@@ -15,7 +15,6 @@ You should have received a copy of the GNU General Public License
 along with ws2812-avr. If not, see <https://www.gnu.org/licenses/>.
  */
 pub mod asm;
-pub mod const_str;
 pub mod nop_block;
 pub mod time;
 pub use nop_block::*;

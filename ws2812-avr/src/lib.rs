@@ -18,14 +18,7 @@ along with ws2812-avr. If not, see <https://www.gnu.org/licenses/>.
 #![no_main]
 #![allow(incomplete_features)] // I live on the limit, like a derivative.
 #![feature(asm_experimental_arch)]
-#![feature(asm_const)]
 #![feature(generic_const_exprs)]
-#![feature(never_type)]
-#![feature(const_mut_refs)]
-#![feature(adt_const_params)]
-#![feature(const_trait_impl)]
-#![feature(const_slice_index)]
-#![feature(effects)]
 
 mod color;
 mod ports;
@@ -33,8 +26,9 @@ pub mod util;
 pub use color::*;
 
 use crate::util::asm::{asm_block, branch_not_equal, dec, ld_immediate, lsl, skip_if_bit_set};
-use arduino_hal::port::{mode::Output, Pin};
+use avr_hal_generic::port::{mode::Output, Pin};
 use avr_hal_generic::avr_device::interrupt::free;
+use core::convert::Infallible;
 use core::marker::PhantomData;
 use core::mem::size_of;
 use ports::{StaticPin, StaticPort};
@@ -245,7 +239,7 @@ pub struct WS2812<P, Ts, Order> {
  */
 type WS2812Default<Pin, Order> = WS2812<Pin, DefaultTimings, Order>;
 
-impl WS2812<!, !, !> {
+impl WS2812<Infallible, Infallible, Infallible> {
     pub fn new<P: StaticPin, Order>(pin: Pin<Output, P>) -> WS2812Default<P, Order> {
         WS2812 {
             _pin: pin,

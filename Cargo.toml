@@ -11,6 +11,7 @@ lto = true
 opt-level = "s"
 
 [workspace]
+resolver = "1"
 members = [
     "ws2812-avr",
     "examples/rainbow",
