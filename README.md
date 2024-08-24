@@ -9,7 +9,7 @@ uses extremely unstable features from the nigthly compiler, such as
 me to using them than not doing so. This library may be used as long
 as you keep that in mind.
 
-Tested on Rust nightly 2022-08-12 (Minimum version required).
+Tested on Rust nightly 2024-04-15 (Minimum version required).
 
 ## Usage
 

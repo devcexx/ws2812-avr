@@ -19,5 +19,5 @@ ws2812-avr = { path = "../../ws2812-avr" }
 
 [dependencies.arduino-hal]
 git = "https://github.com/rahix/avr-hal"
-rev = "1aacefb335517f85d0de858231e11055d9768cdf"
+rev = "3e362624547462928a219c40f9ea8e3a64f21e5f"
 features = ["sparkfun-promicro"]
